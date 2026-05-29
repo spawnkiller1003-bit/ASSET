@@ -1,4 +1,6 @@
 .DS_Store
+.playwright-mcp/
+*.png
 *.tmp
 *.log
 .env
