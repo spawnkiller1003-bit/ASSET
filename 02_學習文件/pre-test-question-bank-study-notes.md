@@ -13,13 +13,13 @@
 - third edition
 - 4th edition
 
-考點：課前通知信與 Wistia 課程影片標題。
+考點：Pre-Test 答案 key 與 Wistia 課程影片標題可能不一致。
 
-解題邏輯：先回到課前通知信的課程影片列，確認影片頻道名稱中的 edition。這題不是醫學判斷題，是讀通知信與課程資料的細節題。
+解題邏輯：正確答案為 4th edition，已通過表單驗證。Wistia 頻道標題雖為「ASSET - 2nd Ed」，但 Pre-Test 答案 key 以 4th edition 為準。
 
-錯誤選項辨識：不要用 ASSET 最新版本或個人印象作答，應以本次課前通知信給的影片標題為準。
+錯誤選項辨識：不要以線上影片標題或個人印象推測版本，應以表單驗證的答案 key 為最後依據。
 
-回看資料：課前通知信、Wistia 頻道首頁。
+回看資料：ASSET 4th edition 課程頁面。
 
 ## 2. The purpose of the Cattell-Braasch maneuver in combination with the Kocher maneuver is to
 
@@ -217,11 +217,11 @@
 - Operative exposure and shunting of the vessel, with formal repair done after the patient has been stabilized
 - Operative expose and ligation of the posterior tibial artery, as the other two vessels will ensure that the foot is well perfused.
 
-考點：tibial vessel injury、runoff、damage control。
+考點：unstable damage-control 情境下單支 tibial vessel 的處理原則。
 
-解題邏輯：先看病人不穩定，再看剩餘兩條 tibial vessels 是否保留。若 anterior tibial 與 peroneal intact，isolated posterior tibial injury 在 damage-control 情境可接受 ligation。
+解題邏輯：病人不穩定，damage-control 優先處理危及生命的出血來源。anterior tibial 與 peroneal artery intact 時，posterior tibial 單支 occluded 對 distal perfusion 威脅有限，不需為了 shunting 延長手術時間。
 
-錯誤選項辨識：stent 不適合 unstable damage-control 優先情境。shunt/repair 主要用於 threatened limb 或多條 runoff 受損。單純 nonoperative 不適合 unstable operative scenario。
+錯誤選項辨識：stent 不適合 unstable 病人。shunt 主要用於多條 runoff 受損或 threatened limb。ligation 在 damage-control 可接受但 non-operative 為 best answer。
 
 回看影片：Popliteal exposure、Fasciotomy。
 
@@ -472,11 +472,11 @@
 - Transverse 1-2 cm above the manubrium
 - Limited median sternotomy
 
-考點：distal cervical trachea / thoracic inlet exposure。
+考點：distal cervical trachea 至 thoracic inlet 的 optimal incision。
 
-解題邏輯：distal trachea 接近 thoracic inlet，需較低位的 anterior neck access，並保留必要時向 sternotomy 延伸的可能。
+解題邏輯：最佳初始 incision 為 midline over larynx and trachea，提供直接 midline access 至 distal trachea，並保留向上或向下（含 sternotomy）延伸的彈性。
 
-錯誤選項辨識：midline over larynx/trachea 適合較高位 airway exposure。SCM anterior border 是 carotid/esophagus lateral neck route。limited sternotomy 是延伸手段，題目問 optimal incision 時要先定位 distal tracheal access。
+錯誤選項辨識：limited sternotomy 是延伸選項而非初始 optimal incision。transverse 1-2 cm above manubrium 雖可達低位 trachea，但不是標準 midline tracheal exposure 起手式。SCM anterior border 是 lateral neck 路線。
 
 回看資料：Neck / Airway 筆記。
 

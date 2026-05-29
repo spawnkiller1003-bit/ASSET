@@ -11,9 +11,9 @@
 
 ## 1. Which edition of ASSET you learn now?
 
-判讀依據：這題不是臨床判斷，而是課程版本辨識。ACS Online Learning 頁面顯示本輪線上課程為 ASSET 2nd Edition；本專案的課前通知與影片整理也以 2nd edition 為主。
+判讀依據：正確答案為 4th edition，已通過表單驗證。Wistia 頻道標題雖為「ASSET - 2nd Ed」，但 Pre-Test 答案 key 以 4th edition 為準。
 
-選項排除方向：不要用 ASSET 是否已有更新版本來推測；應依本次通知信與線上課程頁標示的 edition 作答。
+選項排除方向：不要以線上影片標題或個人印象推測版本，應以表單驗證的答案 key 為最後依據。
 
 ## 2. Cattell-Braasch maneuver combined with Kocher maneuver
 
@@ -83,9 +83,9 @@
 
 ## 13. Posterior tibial artery injury with other runoff intact
 
-判讀依據：ASSET lower extremity vascular exposure 與 damage-control priority 強調先處理生理不穩。若 anterior tibial 與 peroneal artery 保留，isolated posterior tibial injury 對 limb perfusion 的威脅較低，處置可依 damage-control 原則簡化。
+判讀依據：unstable patient 以 damage-control 為優先。anterior tibial 與 peroneal artery intact 時，isolated posterior tibial occlusion 對 distal perfusion 威脅有限，不需為了 shunting 延長手術時間。Non-operative management 是最適當選擇。
 
-選項排除方向：不穩定病人不適合以 endovascular stenting 作為第一反應；正式 repair/shunt 較適合 threatened limb 或多條 runoff 受損；非手術觀察不符合題幹 unstable 情境。
+選項排除方向：endovascular stenting 不適合 unstable 病人。Shunting 適用於 threatened limb 或多條 runoff 受損。Ligation 在 damage-control 可接受但 non-operative 為 best answer。
 
 ## 14. Pelvic fracture hemorrhage control
 
@@ -173,9 +173,9 @@
 
 ## 28. Distal tracheal exposure incision
 
-判讀依據：ASSET neck/airway exposure 要依 airway injury level 選切口。distal trachea 接近 thoracic inlet，低位 anterior neck incision 可提供 distal cervical trachea access，必要時可延伸。
+判讀依據：最佳初始 incision 為 midline over larynx and trachea，提供直接 midline access 至 distal trachea，並保留向上或向下（含 sternotomy）延伸的彈性。
 
-選項排除方向：larynx/trachea midline 高位切口較適合 proximal airway；SCM anterior border 是 carotid/lateral neck route；limited sternotomy 是延伸或特殊低位需求，不一定是第一個 skin incision。
+選項排除方向：limited sternotomy 是延伸選項而非初始 optimal incision。Transverse 1-2 cm above manubrium 雖可達低位 trachea，但不是標準 midline tracheal exposure 起手式。SCM anterior border 是 lateral neck 路線。
 
 ## 29. Structure overlying carotid bifurcation
 
