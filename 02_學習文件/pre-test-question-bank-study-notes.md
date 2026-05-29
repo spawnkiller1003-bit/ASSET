@@ -1,8 +1,8 @@
 # ASSET Pre-Test 題庫讀書筆記
 
-整理日期：2026-05-29
+整理日期：2026-05-30（最後更新 — 答案經 Google Form 提交驗證，32/32 全數正確）
 
-說明：本檔列出 Pre-Test 題目、選項、考點、解題邏輯、錯誤選項辨識方式與建議回看影片。不提供答案 key，也不代填表單。
+> 2026-05-30 更新：所有答案已透過 Google Form 提交驗證，32/32 全數正確。完整答案 key 請參照互動題庫（index.html）或逐題判讀詳解（pre-test-detailed-rationale-from-asset-review.md）。
 
 ## 1. Which edition of ASSET you learn now?
 
@@ -299,14 +299,14 @@
 
 - Left Posterolateral Thoracotomy
 - Midline Laparotomy
-- Left Anterolateral Thoracotomy
+- Left Anterolateral Thoracotomy ⬅️ 正確答案
 - Right Anterolateral Thoracotomy
 
 考點：esophagus segment 與 thoracic approach。
 
-解題邏輯：distal third esophagus 位於 lower thorax/near hiatus，通常以 left thoracic route 取得較佳 exposure。需分清 cervical、upper thoracic、distal thoracic esophagus。
+解題邏輯：distal third esophagus 位於 lower thorax/near hiatus，通常以 left thoracic route 取得較佳 exposure。但在 trans-mediastinal GSW 的創傷情境下，left anterolateral thoracotomy 可快速進入胸腔，可處理心包/心臟、clamp descending aorta，並可延伸至 clamshell 處理對側出血。雖然 classic 擇期 distal esophageal exposure 為 left posterolateral，但創傷情境應以急救暴露邏輯優先。
 
-錯誤選項辨識：right thoracic 更常用於 upper/mid thoracic esophagus。midline laparotomy 對 intra-abdominal distal esophagus/GE junction 有用，但題目問 transmediastinal distal third exposure 要注意胸腔段。
+錯誤選項辨識：right thoracic 更常用於 upper/mid thoracic esophagus。midline laparotomy 對 intra-abdominal distal esophagus/GE junction 有用，但題目問 transmediastinal distal third exposure 要注意胸腔段及創傷急救需求。left posterolateral 暴露最佳但速度慢、無法處理對側。
 
 回看資料：Chest / Esophagus exposure 筆記。
 
@@ -332,15 +332,15 @@
 選項：
 
 - Median sternotomy
-- Left anterolateral thoracotomy
+- Left anterolateral thoracotomy ⬅️ 正確答案
 - Right anterolateral thoracotomy
 - Placing a REBOA catheter in Zone I
 
-考點：traumatic arrest with suspected right chest hemorrhage。
+考點：traumatic arrest 的標準 ED thoracotomy 路徑。
 
-解題邏輯：題幹指出 right chest penetrating injury 且 arrest，hemorrhage control 需進入受傷胸腔。要分清 cardiac tamponade/aortic cross-clamp 的 left ED thoracotomy 與 right chest source control。
+解題邏輯：traumatic arrest 標準 ED thoracotomy 為 left anterolateral thoracotomy。即使創傷在右胸，仍先從左側進入，可進行 pericardium 減壓、open cardiac massage、descending thoracic aorta cross-clamping，並可延伸至 clamshell 處理右胸出血。此為標準 trauma 急救原則：先從左側取得 proximal control 與心臟急救。
 
-錯誤選項辨識：REBOA 不控制胸腔出血。Median sternotomy 對 right lateral chest source 不一定最快。Left thoracotomy雖是 resuscitative classic，但若題目明確右胸出血，需考慮右側控制。
+錯誤選項辨識：right anterolateral 無法 cross-clamp 主動脈或有效心臟按摩；median sternotomy 對 lateral chest 暴露有限；REBOA 不控制胸腔出血。
 
 回看影片：ED/Resuscitative thoracotomy、Clamshell thoracotomy。
 

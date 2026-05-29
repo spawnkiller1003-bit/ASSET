@@ -1,6 +1,8 @@
 # ASSET Pre-Test 自我校正回饋
 
-整理日期：2026-05-29
+整理日期：2026-05-30（最後更新）
+
+> 2026-05-30 更新：本 Pre-Test 已透過 Google Form 提交驗證，32/32 全數正確。下方建議複習方向仍保留供學習參考，完整答案 key 請參照互動題庫（index.html）。
 
 來源：
 
@@ -8,7 +10,7 @@
 - `docs/pre-test-detailed-rationale-from-asset-review.md`
 - 使用者提供之作答紀錄
 
-說明：本檔不是官方答案 key，也不代填或送出表單。內容用途是協助完成課前學習後，自我檢查哪些題目需要回頭確認 ASSET 暴露原則、解剖定位與 damage-control 判斷。
+說明：本檔記錄作答修正歷程，協助理解 ASSET 暴露原則、解剖定位與 damage-control 判斷。
 
 ## 你的作答紀錄
 
@@ -88,15 +90,15 @@
 
 原始作答：C
 
-二次修正：A
+二次修正：A → ⚠️ 經 32/32 驗證，正確答案為 C（Left Anterolateral Thoracotomy）
 
-修正後判讀：distal thoracic esophagus 通常要和 lower thorax / hiatus 的暴露路徑一起想。ASSET 的 chest exposure 重點是切口與受傷 segment 配對；你已從快速急救入口修正到較適合 distal esophageal exposure 的左後外側胸廓切開思路。
+最終判定：trans-mediastinal GSW 常合併雙側胸腔損傷，left anterolateral thoracotomy 可在 unstable 狀態下快速進入胸腔，並可延伸至 clamshell 處理對側。distal esophagus 可於此入口取得 adequate exposure。distal third esophagus 雖然 classic exposure 為 left posterolateral thoracotomy，但題幹為 trans-mediastinal GSW 的創傷情境，應以創傷急救暴露邏輯優先。
 
 自我檢查問題：
 
-- cervical、upper/mid thoracic、distal thoracic esophagus 各自偏向哪一側入路？
-- 題目問的是 resuscitative access，還是 `best accomplished exposure`？
-- distal third esophagus 是否需要更後外側、較完整的胸腔暴露？
+- 創傷情境 vs 擇期手術的 incision 選擇有何不同？
+- trans-mediastinal GSW 是否需要考慮雙側胸腔的 simultaneous access？
+- left anterolateral 可延伸為何種 incision 來處理對側損傷？
 
 ### 第 22 題：high-grade liver laceration 的 initial step
 
