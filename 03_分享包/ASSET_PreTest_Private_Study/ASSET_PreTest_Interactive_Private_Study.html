@@ -1,0 +1,1350 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ASSET Pre-Test 互動題庫</title>
+  <style>
+    :root {
+      --bg: #f7f8f5;
+      --panel: #ffffff;
+      --ink: #17201b;
+      --muted: #60706a;
+      --line: #d9dfda;
+      --accent: #1f6f61;
+      --accent-strong: #124d43;
+      --warn: #b75e12;
+      --bad: #a43131;
+      --good: #1d6b3d;
+      --focus: #dfeee9;
+      --shadow: 0 14px 32px rgba(23, 32, 27, .09);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+    button, input { font: inherit; }
+    .app { min-height: 100vh; display: grid; grid-template-columns: 300px 1fr; }
+    aside {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 18px;
+      background: #eef2ee;
+      border-right: 1px solid var(--line);
+      overflow: auto;
+    }
+    main { padding: 24px; min-width: 0; }
+    .brand { display: grid; gap: 4px; margin-bottom: 18px; }
+    .brand h1 { margin: 0; font-size: 22px; line-height: 1.2; letter-spacing: 0; }
+    .brand p { margin: 0; color: var(--muted); font-size: 14px; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 16px 0; }
+    .stat { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px; }
+    .stat b { display: block; font-size: 20px; }
+    .stat span { color: var(--muted); font-size: 12px; }
+    .progress { height: 10px; border-radius: 999px; background: #dfe5df; overflow: hidden; margin: 10px 0 16px; }
+    .progress div { height: 100%; width: 0; background: var(--accent); transition: width .2s ease; }
+    .toolbar { display: grid; gap: 8px; margin-bottom: 14px; }
+    .toolbar input {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 11px;
+      background: var(--panel);
+      color: var(--ink);
+    }
+    .filters { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .btn {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--ink);
+      border-radius: 8px;
+      min-height: 40px;
+      padding: 8px 10px;
+      cursor: pointer;
+      transition: background .15s ease, border-color .15s ease, transform .05s ease;
+    }
+    .btn:hover { background: #f8faf8; border-color: #b9c4bd; }
+    .btn:active { transform: translateY(1px); }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: white; }
+    .btn.primary:hover { background: var(--accent-strong); }
+    .btn.active { border-color: var(--accent); background: var(--focus); color: var(--accent-strong); }
+    .btn.ghost { background: transparent; }
+    .question-list { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+    .qdot {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 8px;
+      min-height: 36px;
+      cursor: pointer;
+      color: var(--ink);
+    }
+    .qdot.current { outline: 2px solid var(--accent); outline-offset: 1px; }
+    .qdot.answered { background: #e3f1ea; border-color: #98c4ac; }
+    .qdot.flagged::after { content: " *"; color: var(--warn); font-weight: 700; }
+    .qdot.miss { background: #f6e2e2; border-color: #dda7a7; }
+    .card {
+      max-width: 940px;
+      margin: 0 auto;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .question-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 22px 24px;
+      border-bottom: 1px solid var(--line);
+    }
+    .kicker { color: var(--accent-strong); font-weight: 700; font-size: 14px; margin-bottom: 8px; }
+    .question-title { margin: 0; font-size: 24px; line-height: 1.3; letter-spacing: 0; }
+    .badge { display: inline-flex; align-items: center; white-space: nowrap; border-radius: 999px; border: 1px solid var(--line); padding: 6px 10px; color: var(--muted); font-size: 13px; }
+    .question-body { padding: 22px 24px; }
+    .options { display: grid; gap: 10px; }
+    .option {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      text-align: left;
+      border: 1px solid var(--line);
+      background: #fbfcfb;
+      color: var(--ink);
+      border-radius: 8px;
+      padding: 12px;
+      cursor: pointer;
+      min-height: 62px;
+    }
+    .option:hover { border-color: #aac2b9; background: #f6faf8; }
+    .option .letter {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: #e9eee9;
+      font-weight: 800;
+      color: var(--accent-strong);
+    }
+    .option.selected { border-color: var(--accent); background: var(--focus); }
+    .option.correct { border-color: var(--good); background: #e4f2e9; }
+    .option.incorrect { border-color: var(--bad); background: #f7e7e7; }
+    .feedback {
+      display: none;
+      margin-top: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfb;
+      padding: 14px;
+    }
+    .feedback.show { display: block; }
+    .feedback h2 { margin: 0 0 8px; font-size: 17px; letter-spacing: 0; }
+    .feedback p { margin: 8px 0 0; color: var(--muted); }
+    .feedback.good h2 { color: var(--good); }
+    .feedback.bad h2 { color: var(--bad); }
+    .rationale {
+      margin-top: 14px;
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+    }
+    .rationale h3 { margin: 0 0 6px; font-size: 14px; color: var(--accent-strong); }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 18px 24px;
+      border-top: 1px solid var(--line);
+      background: #f8faf8;
+    }
+    .summary {
+      max-width: 940px;
+      margin: 18px auto 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    @media (max-width: 860px) {
+      .app { grid-template-columns: 1fr; }
+      aside { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+      main { padding: 16px; }
+      .question-head { display: grid; }
+      .question-title { font-size: 21px; }
+      .question-list { grid-template-columns: repeat(8, 1fr); }
+    }
+    @media (max-width: 520px) {
+      .question-list { grid-template-columns: repeat(6, 1fr); }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .filters { grid-template-columns: 1fr; }
+      .option { grid-template-columns: 36px 1fr; }
+      .question-head, .question-body, .actions { padding-left: 16px; padding-right: 16px; }
+    }
+    @media print {
+      aside, .actions, .summary { display: none; }
+      .app { display: block; }
+      main { padding: 0; }
+      .card { box-shadow: none; border: 0; }
+      .feedback { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside>
+      <section class="brand">
+        <h1>ASSET Pre-Test 互動題庫</h1>
+        <p>33 題自我複習版；檢核基準為你的二次修正答案，非官方答案 key。</p>
+      </section>
+      <div class="stats" aria-label="作答統計">
+        <div class="stat"><b id="answeredCount">0</b><span>已作答</span></div>
+        <div class="stat"><b id="scoreCount">0</b><span>符合檢核</span></div>
+        <div class="stat"><b id="flagCount">0</b><span>待複習</span></div>
+        <div class="stat"><b id="currentNumber">1/33</b><span>目前題號</span></div>
+      </div>
+      <div class="progress" aria-hidden="true"><div id="progressBar"></div></div>
+      <div class="toolbar">
+        <input id="searchInput" type="search" placeholder="搜尋題幹或選項">
+        <div class="filters">
+          <button class="btn active" data-filter="all">全部</button>
+          <button class="btn" data-filter="unanswered">未作答</button>
+          <button class="btn" data-filter="flagged">待複習</button>
+          <button class="btn" data-filter="missed">需確認</button>
+        </div>
+      </div>
+      <div id="questionList" class="question-list" aria-label="題號列表"></div>
+    </aside>
+    <main>
+      <article class="card" aria-live="polite">
+        <div class="question-head">
+          <div>
+            <div class="kicker" id="questionKicker">Question 1</div>
+            <h2 class="question-title" id="questionTitle"></h2>
+          </div>
+          <span class="badge" id="statusBadge">未作答</span>
+        </div>
+        <div class="question-body">
+          <div id="options" class="options"></div>
+          <section id="feedback" class="feedback"></section>
+        </div>
+        <div class="actions">
+          <button class="btn" id="prevBtn">上一題</button>
+          <button class="btn primary" id="nextBtn">下一題</button>
+          <button class="btn" id="flagBtn">標記待複習</button>
+          <button class="btn ghost" id="revealBtn">顯示判讀</button>
+          <button class="btn ghost" id="resetBtn">重置作答</button>
+        </div>
+      </article>
+      <p class="summary">操作：點選選項後會立即比對你的二次修正答案；「需確認」代表與檢核基準不同。進度會儲存在本機瀏覽器。</p>
+    </main>
+  </div>
+  <script id="question-data" type="application/json">[
+  {
+    "id": 1,
+    "prompt": "Which edition of ASSET you learn now?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "first edition"
+      },
+      {
+        "letter": "B",
+        "text": "second edition"
+      },
+      {
+        "letter": "C",
+        "text": "third edition"
+      },
+      {
+        "letter": "D",
+        "text": "4th edition"
+      }
+    ],
+    "answer": "B",
+    "rationale": {
+      "basis": "這題不是臨床判斷，而是課程版本辨識。ACS Online Learning 頁面顯示本輪線上課程為 ASSET 2nd Edition；本專案的課前通知與影片整理也以 2nd edition 為主。",
+      "elimination": "不要用 ASSET 是否已有更新版本來推測；應依本次通知信與線上課程頁標示的 edition 作答。"
+    }
+  },
+  {
+    "id": 2,
+    "prompt": "The purpose of the Cattell-Braasch maneuver in combination with the Kocher maneuver is to",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Mobilize the small bowel, duodenum, head of the pancreas, stomach, and kidney"
+      },
+      {
+        "letter": "B",
+        "text": "Mobilize the descending colon, spleen, tail of the pancreas, stomach, and kidney"
+      },
+      {
+        "letter": "C",
+        "text": "Visualize the abdominal aorta, celiac trunk, SMA, IMA, and systemic veins"
+      },
+      {
+        "letter": "D",
+        "text": "Visualize the retroperitoneal structures on the right mid abdomen and pelvis"
+      }
+    ],
+    "answer": "D",
+    "rationale": {
+      "basis": "ASSET 的 abdomen/pelvis 暴露訓練包含右側 medial visceral rotation 與 Kocher maneuver。Cattell-Braasch 將右側 colon、小腸與相關 mesentery medialize，Kocher maneuver 使 duodenum/pancreatic head 可被 mobilized，合併目的在右側 retroperitoneal exposure。",
+      "elimination": "左側 colon、spleen、tail of pancreas 屬左側 medial visceral rotation；將 celiac/SMA/IMA 全部當成主要目標，較像中央大血管或左側暴露的混合描述。"
+    }
+  },
+  {
+    "id": 3,
+    "prompt": "A 19-year-old male presents to the ED status post GSW to the right thigh. ABI left 1.0, right 0.8. What is the MOST appropriate next step?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Evaluate the extremity using Doppler ultrasound"
+      },
+      {
+        "letter": "B",
+        "text": "Take him to the operating room for on table angiogram"
+      },
+      {
+        "letter": "C",
+        "text": "Order a CT angiogram of the extremity"
+      },
+      {
+        "letter": "D",
+        "text": "Observe him in the hospital with serial measurement of ABI"
+      }
+    ],
+    "answer": "C",
+    "rationale": {
+      "basis": "ASSET 的 extremity vascular exposure 重點是判斷何時需要影像、何時需要立即手術。ABI abnormal 但題幹未描述 hard signs 或 hemodynamic instability，通常需要進一步 vascular imaging 來定位可能血管傷。",
+      "elimination": "直接進手術室較符合 active hemorrhage、expanding hematoma、ischemia 等 hard signs；單純觀察較適合 ABI 正常者；bedside Doppler 不能取代完整血管傷定位。"
+    }
+  },
+  {
+    "id": 4,
+    "prompt": "What is the most reliable palpable EXTERNAL landmark enabling orientation of the anatomy when performing a cricothyroidotomy?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "The cricoid cartilage"
+      },
+      {
+        "letter": "B",
+        "text": "The thyroid cartilage"
+      },
+      {
+        "letter": "C",
+        "text": "The cricothyroid membrane"
+      },
+      {
+        "letter": "D",
+        "text": "The sternal notch"
+      }
+    ],
+    "answer": "B",
+    "rationale": {
+      "basis": "ASSET/ASSET+ 的 neck and upper extremity lab 包含 cricothyroidotomy。題目問的是最可靠可觸診的外部定位 landmark，不是最後切開的膜本身。臨床定位需要先找穩定、較容易觸及的軟骨結構，再定位 cricothyroid membrane。",
+      "elimination": "cricothyroid membrane 是目標切開處，但在肥胖、腫脹或血腫時不一定是最可靠的外部 landmark；sternal notch 太低，無法直接定位 cricothyroidotomy。"
+    }
+  },
+  {
+    "id": 5,
+    "prompt": "Which approach is the MOST appropriate as the initial incision for an unstable patient with thoracic trauma and suspected cardiac injury?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Trap door thoracotomy"
+      },
+      {
+        "letter": "B",
+        "text": "Right anterolateral thoracotomy"
+      },
+      {
+        "letter": "C",
+        "text": "Left anterolateral thoracotomy"
+      },
+      {
+        "letter": "D",
+        "text": "Clamshell bilateral thoracotomy"
+      }
+    ],
+    "answer": "C",
+    "rationale": {
+      "basis": "ASSET chest lab 包含 resuscitative thoracotomy、clamshell extension 與 cardiac injury management。疑似 cardiac injury 且 unstable 時，初始切口要能最快進入胸腔、解除 tamponade、進行 cardiac control 或 open cardiac massage；後續可視需要延伸為更大暴露。",
+      "elimination": "clamshell 是延伸後的廣泛暴露，不一定是 initial incision；right anterolateral 需題幹支持右胸來源；trap door 不是急救胸廓切開的常規起手式。"
+    }
+  },
+  {
+    "id": 6,
+    "prompt": "The most reliable early finding of compartment syndrome of the lower leg in a patient who can participate in an exam is:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Pulselessness in the injured limb"
+      },
+      {
+        "letter": "B",
+        "text": "Paresthesia between the toes of the affected limb"
+      },
+      {
+        "letter": "C",
+        "text": "Pain greater than expected due to the injury"
+      },
+      {
+        "letter": "D",
+        "text": "The affected limb feels tense or hard"
+      }
+    ],
+    "answer": "C",
+    "rationale": {
+      "basis": "ASSET lower extremity lab 包含 fasciotomy。能配合檢查的病人，早期 compartment syndrome 最重視與傷勢不成比例的疼痛，尤其被動牽拉痛；pulselessness 是晚期徵象。",
+      "elimination": "paresthesia 與 tense compartment 有意義，但早期可靠性不如 pain finding；pulselessness 出現時通常已經太晚。"
+    }
+  },
+  {
+    "id": 7,
+    "prompt": "After exposure of the brachial artery in the distal arm, what is the BEST way to identify the brachial bifurcation and proximal radial and ulnar arteries?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Extending the incision obliquely across the antecubital fossa"
+      },
+      {
+        "letter": "B",
+        "text": "Division of the brachioradialis muscle in the proximal forearm"
+      },
+      {
+        "letter": "C",
+        "text": "Dissecting to expose the median nerve"
+      },
+      {
+        "letter": "D",
+        "text": "Division of the bicipital aponeurosis"
+      }
+    ],
+    "answer": "D",
+    "rationale": {
+      "basis": "ASSET upper extremity skills 包含 brachial artery exposure。 distal arm 到 antecubital fossa 的暴露中，bicipital aponeurosis 是覆蓋 brachial artery bifurcation 區域的重要結構，處理它有助於看到 radial/ulnar origins。",
+      "elimination": "median nerve 是重要鄰近 landmark，但不是打開 bifurcation 的關鍵覆蓋層；brachioradialis 偏 radial artery/forearm exposure；單純延長皮膚切口不足以完成深層辨識。"
+    }
+  },
+  {
+    "id": 8,
+    "prompt": "Which statement is true regarding Zone 2 of the neck?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "It is the smallest region of the neck, bounded by the bony structures of the sternum and mandible"
+      },
+      {
+        "letter": "B",
+        "text": "In the hemodynamically abnormal patient, injuries require mandatory surgical intervention"
+      },
+      {
+        "letter": "C",
+        "text": "Injuries in the zone are optimally exposed via clavicle resection or median sternotomy"
+      },
+      {
+        "letter": "D",
+        "text": "In the hemodynamically normal patient, injuries are best examined using ultrasound"
+      }
+    ],
+    "answer": "B",
+    "rationale": {
+      "basis": "ASSET neck exposure 強調 carotid exposure 與 hemodynamic status。Zone 2 penetrating neck injury 若有 hemodynamic abnormality 或 hard signs，應優先手術控制，不能以影像檢查延誤。",
+      "elimination": "clavicle resection 或 sternotomy 偏 thoracic outlet/subclavian/great vessel exposure；穩定病人多以 CTA 評估，不是把 ultrasound 視為最佳檢查。"
+    }
+  },
+  {
+    "id": 9,
+    "prompt": "Where is the MOST appropriate skin incision for exposure of the common femoral artery located?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Extends along the crease between the abdominal skin and the upper thigh"
+      },
+      {
+        "letter": "B",
+        "text": "Extends across the inguinal ligament onto the upper thigh approximately 2 fingerbreadths lateral to the ASIS"
+      },
+      {
+        "letter": "C",
+        "text": "Extends from just above the inguinal ligament along medial border of sartorius muscle onto the upper thigh"
+      },
+      {
+        "letter": "D",
+        "text": "Extends curvilinearly from 2cm above ASIS to just above inguinal ligament"
+      }
+    ],
+    "answer": "C",
+    "rationale": {
+      "basis": "ASSET lower extremity vascular exposure 包含 femoral artery exposure。common femoral artery 的切口需能跨越 inguinal ligament 附近並向 upper thigh 延伸，接近 femoral pulse/femoral triangle，且利於 proximal/distal control。",
+      "elimination": "橫向 inguinal crease 不利於延伸；靠 ASIS lateral 或 curvilinear iliac 型切口較偏 iliac/retroperitoneal exposure，不是 common femoral artery 的標準暴露線。"
+    }
+  },
+  {
+    "id": 10,
+    "prompt": "Stab wound to right thigh with active bleeding and enlarging hematoma despite tourniquet. Once in OR, preferred area for sterile prepping?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "The right leg circumferentially from groin to toes, and the left groin to above-knee for potential vein harvest and/or angiogram"
+      },
+      {
+        "letter": "B",
+        "text": "The right leg circumferentially from groin to knee, and the left groin to above knee for potential vein harvest and/or angiogram"
+      },
+      {
+        "letter": "C",
+        "text": "The abdomen and both legs circumferentially from groin to toes"
+      },
+      {
+        "letter": "D",
+        "text": "The right leg circumferentially from groin to toes"
+      }
+    ],
+    "answer": "A",
+    "rationale": {
+      "basis": "ASSET extremity exposure 與 trauma OR setup 強調要預備 proximal/distal control、可能的 fasciotomy、血管修補 conduit 與 angiographic access。患肢通常需完整 circumferential prep，並準備對側可取 vein 或作 access 的區域。",
+      "elimination": "只準備到膝部可能限制 distal control 或 fasciotomy；只準備患側忽略 conduit/access；全腹與雙腿全長若無腹部或雙側線索則過度。"
+    }
+  },
+  {
+    "id": 11,
+    "prompt": "Which of the following is required for successful management of anterior tracheal injuries?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Debridement of injury and primary repair"
+      },
+      {
+        "letter": "B",
+        "text": "Using strap muscles to buttress repair"
+      },
+      {
+        "letter": "C",
+        "text": "Partial median sternotomy to expose the injury"
+      },
+      {
+        "letter": "D",
+        "text": "Protection of the repair with a tracheostomy"
+      }
+    ],
+    "answer": "A",
+    "rationale": {
+      "basis": "ASSET neck/airway skills 包含 tracheal exposure。 anterior tracheal injury 的核心處理是清創受損組織並完成 primary repair；其他 buttress、tracheostomy 或 sternotomy 是依傷口位置與污染狀況而定的 adjunct。",
+      "elimination": "題目問 required，需排除「有時有幫助但非必要」的操作；partial sternotomy 只適合遠端或 thoracic inlet 暴露需求。"
+    }
+  },
+  {
+    "id": 12,
+    "prompt": "What structure is commonly divided to expose the origin of the vertebral artery?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Anterior scalene muscle"
+      },
+      {
+        "letter": "B",
+        "text": "Cricopharyngeal muscle"
+      },
+      {
+        "letter": "C",
+        "text": "Omohyoid muscle"
+      },
+      {
+        "letter": "D",
+        "text": "Sternocleidomastoid muscle"
+      }
+    ],
+    "answer": "A",
+    "rationale": {
+      "basis": "ASSET subclavian exposure above clavicle 牽涉 vertebral artery origin。supraclavicular approach 中，anterior scalene 與 phrenic nerve 是關鍵解剖；為暴露 subclavian artery 與 vertebral origin，常需處理 anterior scalene。",
+      "elimination": "omohyoid 常見於 carotid exposure；cricopharyngeal 偏 pharyngo-esophageal region；SCM 可牽開或切開部分附著，但不是 vertebral origin 的核心深層阻擋結構。"
+    }
+  },
+  {
+    "id": 13,
+    "prompt": "Unstable patient with injury and occlusion of posterior tibial artery sparing anterior tibial and peroneal arteries. Most appropriate management?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Endovascular stenting to minimize ischemia of the posteromedial foot"
+      },
+      {
+        "letter": "B",
+        "text": "Non operative management with close monitoring of distal perfusion"
+      },
+      {
+        "letter": "C",
+        "text": "Operative exposure and shunting of the vessel, with formal repair done after the patient has been stabilized"
+      },
+      {
+        "letter": "D",
+        "text": "Operative expose and ligation of the posterior tibial artery, as the other two vessels will ensure that the foot is well perfused."
+      }
+    ],
+    "answer": "D",
+    "rationale": {
+      "basis": "ASSET lower extremity vascular exposure 與 damage-control priority 強調先處理生理不穩。若 anterior tibial 與 peroneal artery 保留，isolated posterior tibial injury 對 limb perfusion 的威脅較低，處置可依 damage-control 原則簡化。",
+      "elimination": "不穩定病人不適合以 endovascular stenting 作為第一反應；正式 repair/shunt 較適合 threatened limb 或多條 runoff 受損；非手術觀察不符合題幹 unstable 情境。"
+    }
+  },
+  {
+    "id": 14,
+    "prompt": "Useful modalities to control bleeding from a pelvic fracture include all EXCEPT:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Pelvic binder"
+      },
+      {
+        "letter": "B",
+        "text": "Intra-abdominal packing"
+      },
+      {
+        "letter": "C",
+        "text": "Selective embolization of internal iliac arteries"
+      },
+      {
+        "letter": "D",
+        "text": "REBOA"
+      }
+    ],
+    "answer": "B",
+    "rationale": {
+      "basis": "ASSET/ASSET+ pelvic skills 包含 pelvic packing 與 REBOA。pelvic fracture bleeding 多在 retroperitoneal/preperitoneal space；有效手段包含 binder、preperitoneal packing、internal iliac embolization 與 REBOA bridge。",
+      "elimination": "intra-abdominal packing 處理的是 peritoneal cavity，不等同 preperitoneal pelvic packing；這是題目中「EXCEPT」的關鍵。"
+    }
+  },
+  {
+    "id": 15,
+    "prompt": "Which is NOT an absolute indication for operative intervention for renal trauma?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Hemodynamically stable patient with vascular blush on CT"
+      },
+      {
+        "letter": "B",
+        "text": "Hemodynamically stable patient with expanding hematoma in Gerota's fascia"
+      },
+      {
+        "letter": "C",
+        "text": "Hemodynamically unstable patient with positive FAST exam"
+      },
+      {
+        "letter": "D",
+        "text": "Hemodynamically stable patient with active bleeding into the peritoneal cavity from the kidney"
+      }
+    ],
+    "answer": "A",
+    "rationale": {
+      "basis": "ASSET abdomen/retroperitoneum 訓練要求區分 hemodynamic stability、retroperitoneal zone 與 damage-control priority。穩定病人的 renal contrast blush 可進入 selective nonoperative management 或 angiographic embolization，而非絕對手術適應症。",
+      "elimination": "hemodynamic instability、intraperitoneal active renal bleeding 或手術中 expanding Gerota hematoma 比較接近 operative indication；題目問 NOT absolute indication 時，要找穩定且可選擇 IR/觀察路徑的情境。"
+    }
+  },
+  {
+    "id": 16,
+    "prompt": "Gunshot pelvis with 50% transection of left common iliac artery; ongoing bleeding despite clamping proximal left common iliac and proximal left external iliac artery. Next step?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Clamp the left common iliac vein"
+      },
+      {
+        "letter": "B",
+        "text": "Clamp the left internal iliac artery"
+      },
+      {
+        "letter": "C",
+        "text": "Clamp the aorta just above its bifurcation"
+      },
+      {
+        "letter": "D",
+        "text": "Pack the pelvis and proceed to angiography"
+      }
+    ],
+    "answer": "B",
+    "rationale": {
+      "basis": "ASSET abdomen/pelvis skills 包含 iliac exposure 與 pelvic bleeding control。若 proximal common iliac 與 external iliac 已控制仍有 arterial bleeding，需想到尚未控制的 internal iliac contribution 或分支 inflow。",
+      "elimination": "夾 common iliac vein 不能控制 arterial inflow；已在開腹且看到 iliac injury時，不應直接轉 angiography；aortic clamp 是更近端升級，但題幹暗示還有特定 iliac branch inflow 未控制。"
+    }
+  },
+  {
+    "id": 17,
+    "prompt": "Hemodynamically normal stab wound left of sternum with equivocal cardiac FAST. Most appropriate operative intervention?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Median Sternotomy"
+      },
+      {
+        "letter": "B",
+        "text": "Pericardial Window"
+      },
+      {
+        "letter": "C",
+        "text": "Right Anterolateral Thoracotomy"
+      },
+      {
+        "letter": "D",
+        "text": "Left Anterolateral Thoracotomy"
+      }
+    ],
+    "answer": "B",
+    "rationale": {
+      "basis": "ASSET chest/cardiac exposure 包含 pericardial access、median sternotomy 與 resuscitative thoracotomy。hemodynamically normal 且 FAST equivocal 時，重點是確認 pericardial blood，不是直接進最大切口。",
+      "elimination": "sternotomy 或 thoracotomy 較適合 confirmed cardiac injury 或 unstable physiology；right anterolateral 與 left parasternal wound 不相稱。"
+    }
+  },
+  {
+    "id": 18,
+    "prompt": "Trans-mediastinal gunshot wound: exposure of distal third of esophagus best accomplished with which incision?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Left Posterolateral Thoracotomy"
+      },
+      {
+        "letter": "B",
+        "text": "Midline Laparotomy"
+      },
+      {
+        "letter": "C",
+        "text": "Left Anterolateral Thoracotomy"
+      },
+      {
+        "letter": "D",
+        "text": "Right Anterolateral Thoracotomy"
+      }
+    ],
+    "answer": "A",
+    "rationale": {
+      "basis": "ASSET chest exposure 強調切口與受傷位置配對。distal thoracic esophagus 接近 lower thorax/hiatus，通常需要從左胸取得較佳暴露；upper/mid thoracic esophagus 才更常考慮右胸路徑。",
+      "elimination": "midline laparotomy 適合腹腔段或 GE junction 附近，不一定暴露 distal thoracic esophagus；right anterolateral 比較不符合 distal third 的路徑；left anterolateral 是急救入口但未必是最佳 distal esophageal exposure。"
+    }
+  },
+  {
+    "id": 19,
+    "prompt": "Optimal operative exposure for unstable trauma patient with injury to anterior medial portion of lung?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Median sternotomy"
+      },
+      {
+        "letter": "B",
+        "text": "Posterolateral thoracotomy"
+      },
+      {
+        "letter": "C",
+        "text": "Anterolateral thoracotomy"
+      },
+      {
+        "letter": "D",
+        "text": "Trap door incision"
+      }
+    ],
+    "answer": "C",
+    "rationale": {
+      "basis": "ASSET chest lab 包含 anterolateral thoracotomy、clamshell extension 與 lung/hilar control。 unstable trauma 需要快速進胸與可控制 anterior/medial lung 或 hilum 的暴露。",
+      "elimination": "posterolateral thoracotomy 暴露佳但速度較不符合 unstable initial exposure；median sternotomy 偏 cardiac/anterior mediastinum；trap door 是特殊 thoracic outlet exposure，不是常規肺部急救入口。"
+    }
+  },
+  {
+    "id": 20,
+    "prompt": "Arrest 2 minutes after GSW to right chest. Most appropriate initial step to obtain hemorrhage control?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Median sternotomy"
+      },
+      {
+        "letter": "B",
+        "text": "Left anterolateral thoracotomy"
+      },
+      {
+        "letter": "C",
+        "text": "Right anterolateral thoracotomy"
+      },
+      {
+        "letter": "D",
+        "text": "Placing a REBOA catheter in Zone I"
+      }
+    ],
+    "answer": "C",
+    "rationale": {
+      "basis": "ASSET resuscitative thoracotomy 原則要同時考慮 arrest physiology 與出血來源。若題幹明確指出 right chest penetrating injury 且目標是 hemorrhage control，初始暴露需能進入受傷胸腔。",
+      "elimination": "REBOA 不控制 thoracic hemorrhage；median sternotomy 不一定能最快控制右胸出血；left thoracotomy是經典 resuscitative route，但題目若鎖定 right chest source，需依來源調整。"
+    }
+  },
+  {
+    "id": 21,
+    "prompt": "Shot in left upper chest, barely palpable BP, pulsatile bleeding beneath clavicle. Optimal surgical exposure?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Anterolateral thoracotomy"
+      },
+      {
+        "letter": "B",
+        "text": "Third intercostal space thoracotomy"
+      },
+      {
+        "letter": "C",
+        "text": "Resection of the medial third of the clavicle"
+      },
+      {
+        "letter": "D",
+        "text": "Clamshell thoracotomy"
+      }
+    ],
+    "answer": "C",
+    "rationale": {
+      "basis": "ASSET subclavian exposure above clavicle 與 chest/thoracic outlet skills 指出，subclavian region 常受 clavicle 遮蔽；必要時需處理 clavicle 以取得 vascular control。",
+      "elimination": "anterolateral thoracotomy 或 clamshell 能進胸，但對 clavicle 下方 subclavian control 不一定最直接；第三肋間 thoracotomy仍未解決 clavicular obstruction。"
+    }
+  },
+  {
+    "id": 22,
+    "prompt": "MVC, positive FAST, hypotensive despite blood; laparotomy shows high-grade liver laceration with active bleeding. Most appropriate initial step?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Packing within the peri-hepatic spaces and liver parenchyma"
+      },
+      {
+        "letter": "B",
+        "text": "Bimanual compression the liver back to its normal shape."
+      },
+      {
+        "letter": "C",
+        "text": "Implement the Pringle maneuver"
+      },
+      {
+        "letter": "D",
+        "text": "Apply aortic cross clamp to control liver hemorrhage"
+      }
+    ],
+    "answer": "B",
+    "rationale": {
+      "basis": "ASSET abdomen lab 包含 liver trauma management。damage-control liver trauma 的初始重點是立即壓迫、packing、恢復肝臟形狀並降低出血，再視情況加做 Pringle maneuver 判斷 portal triad inflow。",
+      "elimination": "Pringle 是有用 maneuver，但若題目問 initial step，不能跳過直接 packing/compression；aortic cross-clamp 不是 liver-specific 初始止血；單一 bimanual compression 可能不足以完成 damage-control packing。"
+    }
+  },
+  {
+    "id": 23,
+    "prompt": "The Cattell-Braasch maneuver exposes which of the following?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Celiac trunk"
+      },
+      {
+        "letter": "B",
+        "text": "Descending thoracic aorta"
+      },
+      {
+        "letter": "C",
+        "text": "Left renal artery"
+      },
+      {
+        "letter": "D",
+        "text": "Inferior vena cava"
+      }
+    ],
+    "answer": "D",
+    "rationale": {
+      "basis": "ASSET abdomen/retroperitoneum skills 包含 right-to-left medial visceral rotation。Cattell-Braasch 是右側 retroperitoneal exposure，和 IVC、right iliac/retroperitoneal structures 的關聯較強。",
+      "elimination": "descending thoracic aorta 是胸腔；left renal artery 偏左側或 central vascular exposure；celiac trunk 屬 upper central/supraceliac exposure，不是 Cattell-Braasch 的主要目標。"
+    }
+  },
+  {
+    "id": 24,
+    "prompt": "Trauma laparotomy in hypotensive patient with large Zone 1 hematoma. Best way to obtain initial proximal aortic control?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Perform a resuscitative thoracotomy and cross-clamp the aorta"
+      },
+      {
+        "letter": "B",
+        "text": "Place a REBOA catheter into Zone I of the aorta"
+      },
+      {
+        "letter": "C",
+        "text": "Divide the left crus of the diaphragm to expose and clamp the aorta"
+      },
+      {
+        "letter": "D",
+        "text": "Manually compress the aorta against the vertebral bodies"
+      }
+    ],
+    "answer": "D",
+    "rationale": {
+      "basis": "ASSET trauma laparotomy 與 supraceliac aortic control 強調先取得最快 temporary control。已經開腹且面對 hypotension/Zone 1 hematoma 時，最立即的 proximal control 是手壓 abdominal aorta against spine，再轉正式 supraceliac exposure/clamp。",
+      "elimination": "resuscitative thoracotomy 或 REBOA 是不同階段/不同入口的選擇；divide left crus 可取得正式 supraceliac clamp，但不是最先、最快的 temporary control。"
+    }
+  },
+  {
+    "id": 25,
+    "prompt": "Open-book pelvis fracture, binder and blood no response, no other hemorrhage source. Most appropriate temporizing measure?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "REBOA"
+      },
+      {
+        "letter": "B",
+        "text": "External fixation of the pelvic ring"
+      },
+      {
+        "letter": "C",
+        "text": "Laparotomy with ligation of internal iliac arteries"
+      },
+      {
+        "letter": "D",
+        "text": "Initiate massive transfusion protocol"
+      }
+    ],
+    "answer": "A",
+    "rationale": {
+      "basis": "ASSET pelvic hemorrhage control 包含 binder、pelvic packing、REBOA 與後續 embolization。binder 與輸血無效、又無其他出血來源時，temporizing measure 應能快速橋接 definitive pelvic hemorrhage control。",
+      "elimination": "MTP 是必要復甦背景但不是局部 hemorrhage control；internal iliac ligation 不是常規首選；external fixation 有助骨盆穩定，但在 refractory shock 的橋接控制上需與更快速 central control 方法比較。"
+    }
+  },
+  {
+    "id": 26,
+    "prompt": "Recommended time limit of occlusion after successful Aortic Zone I balloon occlusion catheter?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "< 30 minutes"
+      },
+      {
+        "letter": "B",
+        "text": "< 45 minutes"
+      },
+      {
+        "letter": "C",
+        "text": "< 60 minutes"
+      },
+      {
+        "letter": "D",
+        "text": "< 90 minutes"
+      }
+    ],
+    "answer": "A",
+    "rationale": {
+      "basis": "ASSET+ skills list 包含 REBOA；Zone I occlusion 是短時間 bridge，會造成 visceral、spinal 與 lower-body ischemia。作答時應選最保守、最符合「短時間暫時控制」的上限。",
+      "elimination": "時間越長，ischemic burden 越高；60 或 90 分鐘通常不符合 Zone I full occlusion 的安全框架。"
+    }
+  },
+  {
+    "id": 27,
+    "prompt": "Stab to right anterior neck at thyroid cartilage level, pulsatile bleeding and hypotension. Most appropriate management?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Operative exploration via a transverse collar incision"
+      },
+      {
+        "letter": "B",
+        "text": "Operative exploration via right anterior sternocleidomastoid incision"
+      },
+      {
+        "letter": "C",
+        "text": "Endovascular evaluation and stenting"
+      },
+      {
+        "letter": "D",
+        "text": "CT angiography to identify the site of bleeding"
+      }
+    ],
+    "answer": "B",
+    "rationale": {
+      "basis": "ASSET carotid exposure 強調 hemodynamic abnormality 與 hard signs。pulsatile bleeding 加 hypotension 代表應立即手術探索；切口需沿 injured side anterior SCM，以利 carotid sheath 暴露與 vascular control。",
+      "elimination": "CTA 與 endovascular evaluation 適合穩定病人或特定血管病灶；transverse collar incision 較偏 airway/thyroid/tracheal access，不是 carotid vascular exposure 的標準入口。"
+    }
+  },
+  {
+    "id": 28,
+    "prompt": "What is the optimal incision to expose the distal tracheal?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Midline over the larynx and trachea"
+      },
+      {
+        "letter": "B",
+        "text": "Anterior border of the left sternocleidomastoid"
+      },
+      {
+        "letter": "C",
+        "text": "Transverse 1-2 cm above the manubrium"
+      },
+      {
+        "letter": "D",
+        "text": "Limited median sternotomy"
+      }
+    ],
+    "answer": "C",
+    "rationale": {
+      "basis": "ASSET neck/airway exposure 要依 airway injury level 選切口。distal trachea 接近 thoracic inlet，低位 anterior neck incision 可提供 distal cervical trachea access，必要時可延伸。",
+      "elimination": "larynx/trachea midline 高位切口較適合 proximal airway；SCM anterior border 是 carotid/lateral neck route；limited sternotomy 是延伸或特殊低位需求，不一定是第一個 skin incision。"
+    }
+  },
+  {
+    "id": 29,
+    "prompt": "Exploring left neck Zone 2 GSW. Which structure overlies the bifurcation of the common carotid artery?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Omohyoid muscle"
+      },
+      {
+        "letter": "B",
+        "text": "Hypoglossal nerve"
+      },
+      {
+        "letter": "C",
+        "text": "Common facial vein"
+      },
+      {
+        "letter": "D",
+        "text": "Digastric muscle"
+      }
+    ],
+    "answer": "C",
+    "rationale": {
+      "basis": "ASSET carotid exposure 中，carotid bifurcation 附近常見 crossing venous structure 會影響暴露，需要辨識、控制或分開處理；hypoglossal nerve 則是較上方需保護的 landmark。",
+      "elimination": "omohyoid 較低，常需 divide 以改善 exposure；digastric 偏上頸部；hypoglossal nerve 重要但不是典型覆蓋 bifurcation 的 crossing structure。"
+    }
+  },
+  {
+    "id": 30,
+    "prompt": "Ideal positioning for trauma patient with injury to popliteal artery?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Supine with hip abduction, slight lateral rotation of the leg, and arms tucked"
+      },
+      {
+        "letter": "B",
+        "text": "Supine with hip adduction, slight medial rotation of the leg, and arms out"
+      },
+      {
+        "letter": "C",
+        "text": "Supine with hip adduction, slight medial rotation of the leg, and a bump under the thighs"
+      },
+      {
+        "letter": "D",
+        "text": "Supine with hip abduction, slight lateral rotation of the leg, and arms out"
+      }
+    ],
+    "answer": "D",
+    "rationale": {
+      "basis": "ASSET lower extremity exposure 包含 popliteal artery exposure。medial approach 需要讓內側大腿、膝部與小腿可接近，通常讓髖部外展、腿部輕度外旋，同時維持 trauma resuscitation 所需的上肢 access。",
+      "elimination": "adduction/medial rotation 會讓 medial approach 變困難；arms tucked 可能限制麻醉與血管通路，與 trauma patient setup 不理想。"
+    }
+  },
+  {
+    "id": 31,
+    "prompt": "Which statement is TRUE regarding the Pringle maneuver?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "It is effective in controlling bleeding from hepatic artery injury"
+      },
+      {
+        "letter": "B",
+        "text": "It is effective in controlling bleeding from the hepatic vein"
+      },
+      {
+        "letter": "C",
+        "text": "It is effective when a patient has a replaced left hepatic artery"
+      },
+      {
+        "letter": "D",
+        "text": "It can be safely used for up to 45 minutes while repairing hepatic injuries"
+      }
+    ],
+    "answer": "A",
+    "rationale": {
+      "basis": "ASSET liver trauma management 包含 Pringle maneuver。Pringle occludes portal triad inflow，因此可控制 hepatic artery/portal vein inflow bleeding；不能控制 hepatic vein 或 retrohepatic IVC outflow bleeding。",
+      "elimination": "hepatic vein bleeding 不會被 Pringle 完全控制；replaced hepatic artery anatomy 可能繞過 porta hepatis control；長時間使用需受 ischemia 與 trauma physiology 限制。"
+    }
+  },
+  {
+    "id": 32,
+    "prompt": "What anatomical structure is in retroperitoneal Zone 2?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Pancreas"
+      },
+      {
+        "letter": "B",
+        "text": "Ureter"
+      },
+      {
+        "letter": "C",
+        "text": "Bladder"
+      },
+      {
+        "letter": "D",
+        "text": "Duodenum"
+      }
+    ],
+    "answer": "B",
+    "rationale": {
+      "basis": "ASSET abdomen/retroperitoneum exposure 要求熟悉 retroperitoneal zones。Zone 2 是 lateral/perirenal zone，包含 kidney、renal hilum 與 ureter 相關結構。",
+      "elimination": "pancreas 與 duodenum偏 central upper retroperitoneum/Zone 1；bladder 屬 pelvic/Zone 3。"
+    }
+  },
+  {
+    "id": 33,
+    "prompt": "Division of which can assist in improved exposure of the subclavian artery?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Pectoralis major muscle"
+      },
+      {
+        "letter": "B",
+        "text": "Omohyoid muscle"
+      },
+      {
+        "letter": "C",
+        "text": "Body of the clavicle"
+      },
+      {
+        "letter": "D",
+        "text": "Posterior scalene muscle"
+      }
+    ],
+    "answer": "C",
+    "rationale": {
+      "basis": "ASSET subclavian exposure above clavicle 與 thoracic outlet injury exposure 均指出 clavicle 是 subclavian vessel 暴露的主要阻擋；需要更大暴露時，可藉由處理 clavicle 改善 proximal/distal control。",
+      "elimination": "pectoralis major 較偏 axillary exposure；omohyoid 偏 carotid/neck exposure；posterior scalene 不是標準改善 subclavian artery exposure 的主要結構，supraclavicular route 常處理的是 anterior scalene。"
+    }
+  }
+]</script>
+  <script>
+    const questions = JSON.parse(document.getElementById('question-data').textContent);
+    const letters = ['A', 'B', 'C', 'D'];
+    const storageKey = 'asset-pretest-interactive-v1';
+    let state = loadState();
+    let current = 0;
+    let filter = 'all';
+    let query = '';
+
+    const els = {
+      answeredCount: document.getElementById('answeredCount'),
+      scoreCount: document.getElementById('scoreCount'),
+      flagCount: document.getElementById('flagCount'),
+      currentNumber: document.getElementById('currentNumber'),
+      progressBar: document.getElementById('progressBar'),
+      questionList: document.getElementById('questionList'),
+      questionKicker: document.getElementById('questionKicker'),
+      questionTitle: document.getElementById('questionTitle'),
+      statusBadge: document.getElementById('statusBadge'),
+      options: document.getElementById('options'),
+      feedback: document.getElementById('feedback'),
+      prevBtn: document.getElementById('prevBtn'),
+      nextBtn: document.getElementById('nextBtn'),
+      flagBtn: document.getElementById('flagBtn'),
+      revealBtn: document.getElementById('revealBtn'),
+      resetBtn: document.getElementById('resetBtn'),
+      searchInput: document.getElementById('searchInput')
+    };
+
+    function loadState() {
+      try {
+        const parsed = JSON.parse(localStorage.getItem(storageKey) || '{}');
+        return { answers: parsed.answers || {}, flagged: parsed.flagged || {}, reveal: parsed.reveal || {} };
+      } catch {
+        return { answers: {}, flagged: {}, reveal: {} };
+      }
+    }
+
+    function saveState() {
+      localStorage.setItem(storageKey, JSON.stringify(state));
+    }
+
+    function isCorrect(q) {
+      return state.answers[q.id] && state.answers[q.id] === q.answer;
+    }
+
+    function isMissed(q) {
+      return state.answers[q.id] && state.answers[q.id] !== q.answer;
+    }
+
+    function matches(q) {
+      const haystack = [q.prompt, ...q.options.map(o => o.text)].join(' ').toLowerCase();
+      const textMatch = !query || haystack.includes(query.toLowerCase());
+      if (!textMatch) return false;
+      if (filter === 'unanswered') return !state.answers[q.id];
+      if (filter === 'flagged') return !!state.flagged[q.id];
+      if (filter === 'missed') return isMissed(q);
+      return true;
+    }
+
+    function visibleQuestions() {
+      return questions.filter(matches);
+    }
+
+    function renderStats() {
+      const answered = questions.filter(q => state.answers[q.id]).length;
+      const score = questions.filter(isCorrect).length;
+      const flagged = questions.filter(q => state.flagged[q.id]).length;
+      els.answeredCount.textContent = answered;
+      els.scoreCount.textContent = score;
+      els.flagCount.textContent = flagged;
+      els.currentNumber.textContent = (current + 1) + '/' + questions.length;
+      els.progressBar.style.width = Math.round(answered / questions.length * 100) + '%';
+    }
+
+    function renderList() {
+      els.questionList.innerHTML = '';
+      const visible = new Set(visibleQuestions().map(q => q.id));
+      for (const q of questions) {
+        const btn = document.createElement('button');
+        btn.className = 'qdot';
+        btn.textContent = q.id;
+        btn.title = '第 ' + q.id + ' 題';
+        btn.disabled = !visible.has(q.id);
+        if (q.id === questions[current].id) btn.classList.add('current');
+        if (state.answers[q.id]) btn.classList.add('answered');
+        if (state.flagged[q.id]) btn.classList.add('flagged');
+        if (isMissed(q)) btn.classList.add('miss');
+        btn.addEventListener('click', () => { current = q.id - 1; render(); });
+        els.questionList.appendChild(btn);
+      }
+    }
+
+    function renderQuestion() {
+      const q = questions[current];
+      const selected = state.answers[q.id];
+      const reveal = !!state.reveal[q.id] || !!selected;
+      els.questionKicker.textContent = 'Question ' + q.id;
+      els.questionTitle.textContent = q.prompt;
+      els.statusBadge.textContent = selected ? (isCorrect(q) ? '符合檢核' : '需確認') : '未作答';
+      els.statusBadge.style.color = selected ? (isCorrect(q) ? 'var(--good)' : 'var(--bad)') : 'var(--muted)';
+      els.options.innerHTML = '';
+      for (const opt of q.options) {
+        const btn = document.createElement('button');
+        btn.className = 'option';
+        if (selected === opt.letter) btn.classList.add('selected');
+        if (selected && opt.letter === q.answer) btn.classList.add('correct');
+        if (selected === opt.letter && selected !== q.answer) btn.classList.add('incorrect');
+        btn.innerHTML = '<span class="letter">' + opt.letter + '</span><span>' + escapeHtml(opt.text) + '</span>';
+        btn.addEventListener('click', () => {
+          state.answers[q.id] = opt.letter;
+          state.reveal[q.id] = true;
+          saveState();
+          render();
+        });
+        els.options.appendChild(btn);
+      }
+      renderFeedback(q, reveal);
+      els.flagBtn.textContent = state.flagged[q.id] ? '取消待複習' : '標記待複習';
+      els.revealBtn.textContent = reveal ? '隱藏判讀' : '顯示判讀';
+      els.prevBtn.disabled = current === 0;
+      els.nextBtn.disabled = current === questions.length - 1;
+    }
+
+    function renderFeedback(q, reveal) {
+      const selected = state.answers[q.id];
+      if (!reveal) {
+        els.feedback.className = 'feedback';
+        els.feedback.innerHTML = '';
+        return;
+      }
+      const status = selected ? (isCorrect(q) ? 'good' : 'bad') : '';
+      const heading = selected ? (isCorrect(q) ? '符合你的二次修正答案' : '與你的二次修正答案不同') : '判讀提示';
+      const selectedLine = selected ? '<p>你目前選擇：' + selected + '。檢核基準：' + q.answer + '。</p>' : '<p>尚未作答；可先閱讀判讀依據後再選。</p>';
+      els.feedback.className = 'feedback show ' + status;
+      els.feedback.innerHTML = '<h2>' + heading + '</h2>' + selectedLine +
+        '<div class="rationale"><h3>判讀依據</h3><p>' + escapeHtml(q.rationale.basis || '此題請回到 ASSET 暴露原則與題幹關鍵字判斷。') + '</p>' +
+        '<h3>選項排除方向</h3><p>' + escapeHtml(q.rationale.elimination || '比較各選項是否符合題幹中的解剖區域、生理狀態與 initial/best/temporizing 等關鍵字。') + '</p></div>';
+    }
+
+    function render() {
+      renderStats();
+      renderList();
+      renderQuestion();
+    }
+
+    function move(step) {
+      current = Math.max(0, Math.min(questions.length - 1, current + step));
+      render();
+    }
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>'"]/g, ch => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', "'":'&#39;', '"':'&quot;' }[ch]));
+    }
+
+    els.prevBtn.addEventListener('click', () => move(-1));
+    els.nextBtn.addEventListener('click', () => move(1));
+    els.flagBtn.addEventListener('click', () => {
+      const id = questions[current].id;
+      state.flagged[id] = !state.flagged[id];
+      if (!state.flagged[id]) delete state.flagged[id];
+      saveState();
+      render();
+    });
+    els.revealBtn.addEventListener('click', () => {
+      const id = questions[current].id;
+      state.reveal[id] = !state.reveal[id];
+      saveState();
+      render();
+    });
+    els.resetBtn.addEventListener('click', () => {
+      if (!confirm('確定要清除本機作答紀錄與待複習標記？')) return;
+      state = { answers: {}, flagged: {}, reveal: {} };
+      saveState();
+      render();
+    });
+    els.searchInput.addEventListener('input', e => {
+      query = e.target.value.trim();
+      const visible = visibleQuestions();
+      if (visible.length && !visible.some(q => q.id === questions[current].id)) current = visible[0].id - 1;
+      render();
+    });
+    document.querySelectorAll('[data-filter]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filter = btn.dataset.filter;
+        const visible = visibleQuestions();
+        if (visible.length && !visible.some(q => q.id === questions[current].id)) current = visible[0].id - 1;
+        render();
+      });
+    });
+    document.addEventListener('keydown', e => {
+      if (e.target && ['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
+      if (e.key === 'ArrowLeft') move(-1);
+      if (e.key === 'ArrowRight') move(1);
+      const letter = e.key.toUpperCase();
+      if (letters.includes(letter)) {
+        const q = questions[current];
+        if (q.options.some(o => o.letter === letter)) {
+          state.answers[q.id] = letter;
+          state.reveal[q.id] = true;
+          saveState();
+          render();
+        }
+      }
+    });
+    render();
+  </script>
+</body>
+</html>
