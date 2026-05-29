@@ -353,11 +353,11 @@
 - Resection of the medial third of the clavicle
 - Clamshell thoracotomy
 
-考點：left subclavian / thoracic outlet vascular injury exposure。
+考點：near-arrest patient with subclavian bleeding 的 resuscitation 優先順序。
 
-解題邏輯：pulsatile bleeding beneath clavicle 指向 subclavian vessel region。要選能直接暴露 thoracic outlet/subclavian 的 approach，必要時需要 clavicle 部分切除。
+解題邏輯：病人 barely palpable BP（接近 arrest），需同時取得 aortic control、cardiac access 與 subclavian vascular control。clamshell thoracotomy 提供雙側胸腔、great vessels 與 aortic arch 的廣泛暴露，可滿足以上需求。
 
-錯誤選項辨識：anterolateral 或 clamshell 可進胸，但 subclavian 尤其 clavicle 下方仍可能 posterior/deep，未必提供最佳 direct exposure。
+錯誤選項辨識：clavicle 切除雖可改善 subclavian exposure，但在 near-arrest 病人中過慢；anterolateral 或 third ICS 對 subclavian control 不夠直接且無法提供 bilateral access。
 
 回看影片：Subclavian exposure above clavicle、Clamshell thoracotomy。
 
@@ -472,11 +472,11 @@
 - Transverse 1-2 cm above the manubrium
 - Limited median sternotomy
 
-考點：distal cervical trachea 至 thoracic inlet 的 optimal incision。
+考點：distal cervical trachea / thoracic inlet exposure。
 
-解題邏輯：最佳初始 incision 為 midline over larynx and trachea，提供直接 midline access 至 distal trachea，並保留向上或向下（含 sternotomy）延伸的彈性。
+解題邏輯：distal trachea 延伸至 thoracic inlet 以下（接近 carina level），optimal exposure 需要打開 anterior mediastinum。limited median sternotomy 提供最完整的 distal tracheal access，可從 cricoid 延伸至 carina。
 
-錯誤選項辨識：limited sternotomy 是延伸選項而非初始 optimal incision。transverse 1-2 cm above manubrium 雖可達低位 trachea，但不是標準 midline tracheal exposure 起手式。SCM anterior border 是 lateral neck 路線。
+錯誤選項辨識：transverse above manubrium 提供 distal cervical trachea 初步暴露，但對 intrathoracic distal trachea 不足；midline 高位切口適合 proximal airway；SCM 偏 lateral neck route。
 
 回看資料：Neck / Airway 筆記。
 

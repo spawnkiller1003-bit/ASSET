@@ -1,0 +1,50 @@
+- generic [ref=e2] [box=0,0,1200,774]:
+  - generic [ref=e4] [box=280,174,640,601]:
+    - generic [ref=e7] [box=280,186,640,448]:
+      - generic [ref=e9] [box=280,186,640,214]:
+        - heading "11506 advanced surgical skills for exposure in trauma Pre-Test" [level=1] [ref=e13] [box=305,209,590,86]
+        - generic [ref=e15] [box=305,319,590,64]:
+          - generic [ref=e17] [box=305,319,237,20]:
+            - link "登入 Google" [ref=e18] [cursor=pointer] [box=305,320,77,17]:
+              - /url: https://accounts.google.com/Login?continue=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLSeyl1ebFYpaL3itxWJNO2PFoV4aSogl5HEFURoBV6gKZf_Nbg%2Fviewform%3Ffbzx%3D-335638670574336865
+            - text: 即可儲存進度。
+            - button "瞭解詳情" [ref=e19] [cursor=pointer] [box=486,320,57,17]
+          - generic [ref=e21] [box=305,363,590,20]: "* 表示必填問題"
+      - list [ref=e22] [box=280,412,640,138]:
+        - listitem [ref=e23] [box=280,412,640,138]:
+          - generic [ref=e25] [box=280,412,640,138]:
+            - heading "姓名 將這個問題設為必填" [level=3] [ref=e28] [box=305,437,43,24]:
+              - generic [ref=e29] [box=305,437,32,24]: 姓名
+              - generic "將這個問題設為必填" [ref=e30] [box=337,437,11,24]: "*"
+            - generic [ref=e35] [box=305,491,295,24]:
+              - textbox "姓名 將這個問題設為必填" [ref=e36] [box=305,491,295,24]
+              - generic [box=305,493,57,20]: 您的回答
+      - generic [ref=e38] [box=280,562,640,72]:
+        - generic [ref=e39] [box=280,562,640,48]:
+          - button "繼續" [ref=e41] [cursor=pointer] [box=280,562,79,38]:
+            - generic [ref=e44] [box=305,563,29,36]: 繼續
+          - generic [ref=e45] [box=451,562,298,48]:
+            - progressbar "第 1 頁，共 2 頁" [ref=e46] [box=451,576,184,10]
+            - generic [ref=e48] [box=635,571,114,20]: 第 1 頁，共 2 頁
+          - button "清除表單" [ref=e50] [cursor=pointer] [box=847,562,73,38]:
+            - generic [ref=e53] [box=855,562,57,36]: 清除表單
+        - generic [ref=e54] [box=280,618,640,16]: 請勿利用 Google 表單送出密碼。
+    - generic [ref=e55] [box=280,650,640,101]:
+      - generic [ref=e56] [box=280,650,640,45]:
+        - text: Google 並未認可或建立這項內容。 -
+        - link "服務條款" [ref=e57] [cursor=pointer] [box=638,651,48,14]:
+          - /url: https://policies.google.com/terms
+        - text: "-"
+        - link "隱私權政策" [ref=e58] [cursor=pointer] [box=696,651,60,14]:
+          - /url: https://policies.google.com/privacy
+        - paragraph [ref=e59] [box=296,678,608,17]:
+          - text: 這份表單很可疑嗎？
+          - link "報告" [ref=e60] [cursor=pointer] [box=643,680,24,14]:
+            - /url: https://docs.google.com/forms/d/e/1FAIpQLSeyl1ebFYpaL3itxWJNO2PFoV4aSogl5HEFURoBV6gKZf_Nbg/abuse
+      - link "Google 表單" [ref=e62] [cursor=pointer] [box=539,728,122,19]:
+        - /url: //www.google.com/forms/about/?utm_source=product&utm_medium=forms_logo&utm_campaign=forms
+        - img "Google" [ref=e63] [box=539,719,74,24]
+        - text: 表單
+  - generic [ref=e67] [box=5,655,48,19]:
+    - button "說明和意見回饋" [ref=e68] [cursor=pointer] [box=5,634,48,48]
+    - tooltip [ref=e71] [box=-9995,682,1,1]: 說明和意見回饋

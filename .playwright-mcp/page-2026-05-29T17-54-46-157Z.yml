@@ -1,0 +1,50 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e4]:
+      - generic [ref=e7]:
+        - generic [ref=e9]:
+          - heading "11506 advanced surgical skills for exposure in trauma Pre-Test" [level=1] [ref=e13]
+          - generic [ref=e15]:
+            - generic [ref=e17]:
+              - link "登入 Google" [ref=e18] [cursor=pointer]:
+                - /url: https://accounts.google.com/Login?continue=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLSeyl1ebFYpaL3itxWJNO2PFoV4aSogl5HEFURoBV6gKZf_Nbg%2Fviewform%3Fentry.1989079809%3DClamshell%2520thoracotomy%26entry.1768034105%3DVisualize%2520the%2520retroperitoneal%2520structures%2520on%2520the%2520right%2520mid%2520abdomen%2520and%2520pelvis%26entry.2096685961%3DManually%2520compress%2520the%2520aorta%2520against%2520the%2520vertebral%2520bodies%26entry.435209925%3DLimited%2520median%2520sternotomy%26entry.264105568%3DNon%2520operative%2520management%2520with%2520close%2520monitoring%2520of%2520distal%2520perfusion%26entry.1022199590%3DPain%2520greater%2520than%2520expected%2520due%2520to%2520the%2520injury%26entry.2056666104%3DAnterolateral%2520thoracotomy%26entry.904885077%3DSupine%2520with%2520hip%2520abduction%252C%2520slight%2520lateral%2520rotation%2520of%2520the%2520leg%252C%2520and%2520arms%2520out%26entry.183241795%3DDebridement%2520of%2520injury%2520and%2520primary%2520repair%26entry.1476450339%3DPericardial%2520Window%26entry.1581370398%3D%25E6%25A2%2581%25E7%25A5%2596%25E7%2591%258B%26entry.1985966574%3DThe%2520thyroid%2520cartilage%26entry.1340198812%3DClamp%2520the%2520left%2520internal%2520iliac%2520artery%26entry.128349843%3DOperative%2520exploration%2520via%2520right%2520anterior%2520sternocleidomastoid%2520incision%26entry.652434831%3DDivision%2520of%2520the%2520bicipital%2520aponeurosis%26entry.2015282903%3DIntra-abdominal%2520packing%26entry.948520655%3DLeft%2520Anterolateral%2520Thoracotomy%26entry.1161073197%3DIt%2520is%2520effective%2520in%2520controlling%2520bleeding%2520from%2520hepatic%2520artery%2520injury%26entry.990877184%3DHemodynamically%2520stable%2520patient%2520with%2520vascular%2520blush%2520on%2520CT%26entry.1607431697%3DLeft%2520anterolateral%2520thoracotomy%26entry.170672344%3DUreter%26entry.1584679756%3DExtends%2520from%2520just%2520above%2520the%2520inguinal%2520ligament%2520along%2520medial%2520border%2520of%2520sartorius%2520muscle%2520onto%2520the%2520upper%2520thigh%26entry.1593906705%3DInferior%2520vena%2520cava%26entry.409667096%3DLeft%2520anterolateral%2520thoracotomy%26entry.760676177%3DAnterior%2520scalene%2520muscle%26entry.1193125083%3DOrder%2520a%2520CT%2520angiogram%2520of%2520the%2520extremity%26entry.898123824%3DIn%2520the%2520hemodynamically%2520abnormal%2520patient%252C%2520injuries%2520require%2520mandatory%2520surgical%2520intervention%26entry.1209848342%3DREBOA%26entry.1661947416%3DBimanual%2520compression%2520the%2520liver%2520back%2520to%2520its%2520normal%2520shape.%26entry.1397782687%3DBody%2520of%2520the%2520clavicle%26entry.1916714625%3DCommon%2520facial%2520vein%26entry.1426901291%3DThe%2520abdomen%2520and%2520both%2520legs%2520circumferentially%2520from%2520groin%2520to%2520toes%26entry.691572393%3Dsecond%2520edition%26entry.1280407061%3D%253C%252030%2520minutes%26fbzx%3D-7455874664676135425
+              - text: 即可儲存進度。
+              - button "瞭解詳情" [ref=e19] [cursor=pointer]
+            - generic [ref=e21]: "* 表示必填問題"
+        - list [ref=e22]:
+          - listitem [ref=e23]:
+            - generic [ref=e25]:
+              - heading "姓名 將這個問題設為必填" [level=3] [ref=e28]:
+                - generic [ref=e29]: 姓名
+                - generic "將這個問題設為必填" [ref=e30]: "*"
+              - textbox "姓名 將這個問題設為必填" [ref=e36]: 梁祖瑋
+        - generic [ref=e38]:
+          - generic [ref=e39]:
+            - button "繼續" [ref=e41] [cursor=pointer]:
+              - generic [ref=e44]: 繼續
+            - generic [ref=e45]:
+              - progressbar "第 1 頁，共 2 頁" [ref=e46]
+              - generic [ref=e48]: 第 1 頁，共 2 頁
+          - generic [ref=e49]: 請勿利用 Google 表單送出密碼。
+      - generic [ref=e50]:
+        - generic [ref=e51]:
+          - text: Google 並未認可或建立這項內容。 -
+          - link "服務條款" [ref=e52] [cursor=pointer]:
+            - /url: https://policies.google.com/terms
+          - text: "-"
+          - link "隱私權政策" [ref=e53] [cursor=pointer]:
+            - /url: https://policies.google.com/privacy
+          - paragraph [ref=e54]:
+            - text: 這份表單很可疑嗎？
+            - link "報告" [ref=e55] [cursor=pointer]:
+              - /url: https://docs.google.com/forms/d/e/1FAIpQLSeyl1ebFYpaL3itxWJNO2PFoV4aSogl5HEFURoBV6gKZf_Nbg/abuse
+        - link "Google 表單" [ref=e57] [cursor=pointer]:
+          - /url: //www.google.com/forms/about/?utm_source=product&utm_medium=forms_logo&utm_campaign=forms
+          - img "Google" [ref=e58]
+          - text: 表單
+    - generic [ref=e62]:
+      - button "說明和意見回饋" [ref=e63] [cursor=pointer]
+      - tooltip [ref=e66]: 說明和意見回饋
+  - generic [ref=e68]:
+    - generic [ref=e69]: 你正在編輯自己的回覆內容。只要與他人共用這個網址，就能允許其他使用者編輯你的回覆內容。
+    - button "填寫新的回覆" [active] [ref=e70] [cursor=pointer]

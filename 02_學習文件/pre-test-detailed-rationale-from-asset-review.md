@@ -131,9 +131,9 @@
 
 ## 21. Left upper chest bleeding beneath clavicle
 
-判讀依據：ASSET subclavian exposure above clavicle 與 chest/thoracic outlet skills 指出，subclavian region 常受 clavicle 遮蔽；必要時需處理 clavicle 以取得 vascular control。
+判讀依據：病人 barely palpable BP（接近 arrest），需同時取得 aortic control、cardiac access 與 subclavian vascular control。clamshell thoracotomy 提供雙側胸腔、great vessels 與 aortic arch 的廣泛暴露，優先級高於單純 clavicle resection。
 
-選項排除方向：anterolateral thoracotomy 或 clamshell 能進胸，但對 clavicle 下方 subclavian control 不一定最直接；第三肋間 thoracotomy仍未解決 clavicular obstruction。
+選項排除方向：clavicle 切除雖可改善 subclavian exposure，但在 near-arrest 病人中過慢；anterolateral 或 third ICS 對 subclavian control 不夠直接且無法提供 bilateral access。
 
 ## 22. High-grade liver laceration at laparotomy
 
@@ -173,9 +173,9 @@
 
 ## 28. Distal tracheal exposure incision
 
-判讀依據：最佳初始 incision 為 midline over larynx and trachea，提供直接 midline access 至 distal trachea，並保留向上或向下（含 sternotomy）延伸的彈性。
+判讀依據：distal trachea 延伸至 thoracic inlet 以下（接近 carina level），optimal exposure 需要打開 anterior mediastinum。limited median sternotomy 提供最完整的 distal tracheal access，可從 cricoid 延伸至 carina。
 
-選項排除方向：limited sternotomy 是延伸選項而非初始 optimal incision。Transverse 1-2 cm above manubrium 雖可達低位 trachea，但不是標準 midline tracheal exposure 起手式。SCM anterior border 是 lateral neck 路線。
+選項排除方向：transverse above manubrium 提供 distal cervical trachea 初步暴露，但對 intrathoracic distal trachea 不足；midline 高位切口適合 proximal airway；SCM 偏 lateral neck route。
 
 ## 29. Structure overlying carotid bifurcation
 

@@ -1,0 +1,28 @@
+- generic [ref=e4]:
+  - generic [ref=e6]:
+    - heading "11506 advanced surgical skills for exposure in trauma Pre-Test" [level=1] [ref=e8]
+    - generic [ref=e9]: 我們已經收到您回覆的表單。
+    - generic [ref=e10]:
+      - link "查看正確率" [ref=e11] [cursor=pointer]:
+        - /url: https://docs.google.com/forms/d/e/1FAIpQLSeyl1ebFYpaL3itxWJNO2PFoV4aSogl5HEFURoBV6gKZf_Nbg/viewscore?viewscore=AE0zAgCiTqpmVc0od1wYb1ztDlFNl_zb3rn0g_Cnd8hE29MVIU7aQ-iHuIl5l1Sjvw8hwlk
+        - generic [ref=e14]: 查看正確率
+      - link "修改回覆內容" [ref=e15] [cursor=pointer]:
+        - /url: https://docs.google.com/forms/d/e/1FAIpQLSeyl1ebFYpaL3itxWJNO2PFoV4aSogl5HEFURoBV6gKZf_Nbg/viewform?usp=form_confirm&edit2=2_ABaOnucaUBZ_b-3H8E69QPe_XO9cbtv8_XA3GnZ0l2j1brYGKL5mbVWho_wLRLQ9xsaS-fQ
+      - link "提交其他回應" [ref=e16] [cursor=pointer]:
+        - /url: https://docs.google.com/forms/d/e/1FAIpQLSeyl1ebFYpaL3itxWJNO2PFoV4aSogl5HEFURoBV6gKZf_Nbg/viewform?usp=form_confirm
+  - generic [ref=e17]:
+    - generic [ref=e18]:
+      - text: Google 並未認可或建立這項內容。 -
+      - link "服務條款" [ref=e19] [cursor=pointer]:
+        - /url: https://policies.google.com/terms
+      - text: "-"
+      - link "隱私權政策" [ref=e20] [cursor=pointer]:
+        - /url: https://policies.google.com/privacy
+      - paragraph [ref=e21]:
+        - text: 這份表單很可疑嗎？
+        - link "報告" [ref=e22] [cursor=pointer]:
+          - /url: https://docs.google.com/forms/d/e/1FAIpQLSeyl1ebFYpaL3itxWJNO2PFoV4aSogl5HEFURoBV6gKZf_Nbg/abuse
+    - link "Google 表單" [ref=e24] [cursor=pointer]:
+      - /url: //www.google.com/forms/about/?utm_source=product&utm_medium=forms_logo&utm_campaign=forms
+      - img "Google" [ref=e25]
+      - text: 表單
